@@ -1,13 +1,17 @@
 package go_anagrams
 
-import "unicode"
+import (
+	"unicode"
+	"sort"
+	"strings"
+)
 
 func IsAnagram(first, second string) (result bool) {
 	firstRunes := []rune(first)
 	secondRunes := []rune(second)
 
 	if len(firstRunes) != len(secondRunes) {
-		return
+		return false
 	}
 
 	firstRuneSet := getUpperCaseRuneSetWithLength(firstRunes)
@@ -24,6 +28,10 @@ func IsAnagram(first, second string) (result bool) {
 	return
 }
 
+func IsAnagramUsingSorting(first, second string) bool {
+	return getStringWithSortedCharacters(first) == getStringWithSortedCharacters(second)
+}
+
 func getUpperCaseRuneSetWithLength(runes []rune) (runeSet map[rune]int) {
 	runeSet = map[rune]int{}
 	for _, r := range runes {
@@ -31,4 +39,11 @@ func getUpperCaseRuneSetWithLength(runes []rune) (runeSet map[rune]int) {
 		runeSet[r]++
 	}
 	return
+}
+
+func getStringWithSortedCharacters(s string) string {
+	s = strings.ToUpper(s)
+	sortedFirstCharacterStrings := strings.Split(s, "")
+	sort.Strings(sortedFirstCharacterStrings)
+	return strings.Join(sortedFirstCharacterStrings,"")
 }
