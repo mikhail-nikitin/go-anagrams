@@ -10,15 +10,8 @@ func IsAnagram(first, second string) (result bool) {
 		return
 	}
 
-	firstRuneSet := map[rune]int{}
-	secondRuneSet := map[rune]int{}
-
-	for i := 0; i < len(firstRunes); i++ {
-		firstRune := unicode.ToUpper(firstRunes[i])
-		secondRune := unicode.ToUpper(secondRunes[i])
-		firstRuneSet[firstRune]++
-		secondRuneSet[secondRune]++
-	}
+	firstRuneSet := getUpperCaseRuneSetWithLength(firstRunes)
+	secondRuneSet := getUpperCaseRuneSetWithLength(secondRunes)
 
 	result = true
 	for r, firstRuneCount := range firstRuneSet {
@@ -27,6 +20,15 @@ func IsAnagram(first, second string) (result bool) {
 			result = false
 			break
 		}
+	}
+	return
+}
+
+func getUpperCaseRuneSetWithLength(runes []rune) (runeSet map[rune]int) {
+	runeSet = map[rune]int{}
+	for _, r := range runes {
+		r = unicode.ToUpper(r)
+		runeSet[r]++
 	}
 	return
 }
