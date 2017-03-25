@@ -1,9 +1,9 @@
 package go_anagrams
 
 import (
-	"unicode"
 	"sort"
 	"strings"
+	"unicode"
 )
 
 func IsAnagram(first, second string) (result bool) {
@@ -45,5 +45,5 @@ func getStringWithSortedCharacters(s string) string {
 	s = strings.ToUpper(s)
 	sortedFirstCharacterStrings := strings.Split(s, "")
 	sort.Strings(sortedFirstCharacterStrings)
-	return strings.Join(sortedFirstCharacterStrings,"")
+	return strings.Join(sortedFirstCharacterStrings, "")
 }
