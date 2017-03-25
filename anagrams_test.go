@@ -36,6 +36,7 @@ func getTestCases() []IsAnagramTestCase {
 		{"the second string is the reversed first", "апельсин", "нисьлепа", true},
 		{"diffrent repetions", "ааб", "бба", false},
 		{"empty strings", "", "", true},
+		{"with empty string", "", "asdfasdf", false},
 	}
 }
 
@@ -72,6 +73,7 @@ func getBenchmarkingPairs() []struct{ first, second string } {
 		{"вертикаль", "кильватер"},
 		{"апельсин", "спаниель"},
 		{"внимание", "Вениамин"},
+		{"внимание1", "Вениамин"},
 	}
 	return pairs
 }
